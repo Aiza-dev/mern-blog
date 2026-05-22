@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-peach-50: #FFF8F2;
+  --color-peach-100: #FFDAB9;
+  --color-peach-200: #FFDAB9;
+  --color-peach-300: #FCD0A1;
+  --color-peach-400: #FF9E7D;
+  --color-peach-500: #FF9E7D;
+  --color-peach-550: #FF9E7D;
+  --color-peach-600: #FF9E7D;
+  
+  --color-brown-50: #FFF8F2;
+  --color-brown-100: #FAF3F0;
+  --color-brown-200: #FFDAB9;
+  --color-brown-300: #D2B48C;
+  --color-brown-400: #D2B48C;
+  --color-brown-500: #5D4037;
+  --color-brown-600: #5D4037;
+  --color-brown-700: #5D4037;
+  --color-brown-800: #4E342E;
+  --color-brown-850: #2C1A14;
+  --color-brown-900: #1C0F0B;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom global styles for smooth transitions the modern way */
+body {
+  @apply bg-brown-50 text-brown-900 font-sans transition-colors duration-300 antialiased;
+}
+
+/* Dark mode configurations */
+.dark body {
+  @apply bg-brown-900 text-peach-50;
+}
+
+/* Custom scrollbar to match our sleek aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-brown-100 dark:bg-brown-800;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brown-300 hover:bg-brown-400 dark:bg-brown-600 dark:hover:bg-brown-500 rounded;
+}
+
+/* Elegant shiny-card and hover shadow definitions */
+.shiny-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shiny-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(255, 158, 125, 0.65), 0 10px 15px -3px rgba(255, 158, 125, 0.3);
+  border-color: #FF9E7D !important;
+}
+
+.shiny-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.shiny-card:hover::after {
+  left: 180%;
+  transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Neon glow hover for all general cards and banners */
+.neon-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neon-hover:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 0 20px rgba(255, 158, 125, 0.6), 0 5px 15px rgba(255, 158, 125, 0.25);
+  border-color: #FF9E7D !important;
+}
+
+/* General CSS animations for logos and rich elements */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(15deg); }
+}
+
+.animate-logo-svg {
+  animation: logo-pulse 4s ease-in-out infinite;
+}
+
+.group:hover .animate-logo-svg-hover {
+  animation: logo-pulse 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes icon-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg) scale(1.05); }
+  75% { transform: rotate(10deg) scale(1.05); }
+}
+
+.hover-wiggle:hover svg {
+  animation: icon-wiggle 0.8s ease-in-out infinite;
+}
+
+.animate-slow-spin {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Ensure cursor-pointer behavior on all interactive elements */
+button,
+a,
+select,
+input,
+textarea,
+.cursor-pointer-all {
+  cursor: pointer !important;
+}
+
